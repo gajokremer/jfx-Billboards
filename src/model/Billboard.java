@@ -5,12 +5,12 @@ import java.io.Serializable;
 public class Billboard implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private double width;
-	private double height;
-	private boolean inUse;
+	private String width;
+	private String height;
+	private String inUse;
 	private String brand;
 	
-	public Billboard(double width, double height, boolean inUse, String brand) {
+	public Billboard(String width, String height, String inUse, String brand) {
 		super();
 		this.width = width;
 		this.height = height;
@@ -18,27 +18,27 @@ public class Billboard implements Serializable {
 		this.brand = brand;
 	}
 
-	public double getWidth() {
+	public String getWidth() {
 		return width;
 	}
 
-	public void setWidth(double width) {
+	public void setWidth(String width) {
 		this.width = width;
 	}
 
-	public double getHeight() {
+	public String getHeight() {
 		return height;
 	}
 
-	public void setHeight(double height) {
+	public void setHeight(String height) {
 		this.height = height;
 	}
 
-	public boolean isInUse() {
+	public String isInUse() {
 		return inUse;
 	}
 
-	public void setInUse(boolean inUse) {
+	public void setInUse(String inUse) {
 		this.inUse = inUse;
 	}
 

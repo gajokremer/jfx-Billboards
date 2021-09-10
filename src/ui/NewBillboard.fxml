@@ -7,49 +7,18 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <DialogPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="400.0">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="400.0">
          <children>
-            <TextField layoutX="146.0" layoutY="50.0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
-            <TextField layoutX="146.0" layoutY="87.0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
-            <TextField layoutX="146.0" layoutY="125.0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
-            <TextField layoutX="146.0" layoutY="164.0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
-            <Label layoutX="85.0" layoutY="52.0" text="Width:">
+            <TextField fx:id="dataReader" layoutX="57.0" layoutY="71.0" prefHeight="35.0" prefWidth="286.0">
                <font>
                   <Font size="18.0" />
                </font>
-            </Label>
-            <Label layoutX="79.0" layoutY="89.0" text="Height:">
+            </TextField>
+            <Label layoutX="150.0" layoutY="24.0" text="Input data">
                <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="85.0" layoutY="127.0" text="In use:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="85.0" layoutY="166.0" text="Brand:">
-               <font>
-                  <Font size="18.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
          </children>
