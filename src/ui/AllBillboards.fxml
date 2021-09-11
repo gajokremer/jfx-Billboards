@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView fx:id="tvBillboards" layoutX="16.0" layoutY="56.0" prefHeight="299.0" prefWidth="569.0">
+      <TableView fx:id="tvBillboards" layoutX="16.0" layoutY="64.0" prefHeight="294.0" prefWidth="569.0">
         <columns>
           <TableColumn fx:id="tcWidth" prefWidth="112.0" text="Width" />
           <TableColumn fx:id="tcHeight" prefWidth="101.0" text="Height" />
@@ -19,11 +19,16 @@
         </columns>
       </TableView>
       <Button layoutX="16.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: blue;" text="Back" textFill="WHITE" />
-      <Label layoutX="365.0" layoutY="17.0" text="Total Billboards:">
+      <Label layoutX="461.0" layoutY="5.0" text="Total Billboards:" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="totalBillboards" layoutX="497.0" layoutY="16.0" prefHeight="26.0" prefWidth="81.0" />
+      <TextField fx:id="totalBillboards" alignment="CENTER" layoutX="492.0" layoutY="27.0" prefHeight="26.0" prefWidth="55.0" />
+      <Label layoutX="220.0" layoutY="14.0" text="Billboards" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="36.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

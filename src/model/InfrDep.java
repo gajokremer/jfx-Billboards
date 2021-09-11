@@ -11,7 +11,7 @@ public class InfrDep {
 	private int totalBillboards = 0;
 	private List<Billboard> billboards;
 	
-	public String BILLBOARD_FILE_NAME = "data/billboard.bbd";
+//	public String BILLBOARD_FILE_NAME = "data/billboard.bbd";
 	public String BILLBOARD_CSV_LIST = "data/BillboardDataExported.csv";
 
 	public int getTotalBillboards() {
@@ -85,12 +85,9 @@ public class InfrDep {
 		
 		while(line != null) {
 			
-			String [] parts = line.split(";");
+			String [] parts = line.split("\\|");
 			Billboard  newBillboard = new Billboard(parts[0], parts[1], parts[2], parts[3]);
 			addBillboard(newBillboard);
-			
-			System.out.println(parts[0]);
-			
 			line = br.readLine();
 		}
 		
