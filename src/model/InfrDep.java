@@ -2,6 +2,7 @@ package model;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -80,6 +81,8 @@ public class InfrDep {
 	
 	public void importData(/*String fn*/) throws IOException {
 		
+		billboards.removeAll(billboards);
+		
 		BufferedReader br = new BufferedReader(new FileReader(BILLBOARD_CSV_LIST));
 		String line = br.readLine();
 		
@@ -92,6 +95,20 @@ public class InfrDep {
 		}
 		
 		br.close();
+	}
+	
+	public void exportData() throws IOException {
+
+		FileWriter fw = new FileWriter(BILLBOARD_CSV_LIST, false);
+		
+		for(int i = 0; i < billboards.size(); i++) {
+			
+			Billboard aBillboard = billboards.get(i);
+			fw.write(aBillboard.getWidth() + "|" + aBillboard.getHeight() + "|" + 
+					aBillboard.isInUse() + "|" + aBillboard.getBrand() + "\n");
+		}
+		
+		fw.close();
 	}
 
 	@Override

@@ -10,17 +10,17 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="428.0" layoutY="105.0" mnemonicParsing="false" onAction="#addBillboard" style="-fx-background-color: blue;" text="Add Billboard" textFill="WHITE">
+      <Button layoutX="428.0" layoutY="105.0" mnemonicParsing="false" onAction="#addBillboard" style="-fx-background-color: blue; -fx-border-color: white;" text="Add Billboard" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="419.0" layoutY="189.0" mnemonicParsing="false" onAction="#showBillboards" style="-fx-background-color: blue;" text="Show Billboards" textFill="WHITE">
+      <Button layoutX="419.0" layoutY="189.0" mnemonicParsing="false" onAction="#showBillboards" style="-fx-background-color: blue; -fx-border-color: white;" text="Show Billboards" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="424.0" layoutY="275.0" mnemonicParsing="false" onAction="#dangerReports" style="-fx-background-color: blue;" text="Danger Report" textFill="WHITE">
+      <Button layoutX="424.0" layoutY="275.0" mnemonicParsing="false" onAction="#dangerReports" style="-fx-background-color: blue; -fx-border-color: white;" text="Danger Report" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>

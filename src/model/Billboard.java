@@ -55,4 +55,16 @@ public class Billboard implements Serializable {
 		double area = height * width;
 		return area;
 	}
+	
+	@Override
+	public String toString() {
+		
+		String line = 
+				"\n\nWidth: " + getWidth() + 
+				"\nHeight: " + getHeight() + 
+				"\nIn use: " + isInUse() + 
+				"\nBrand: " + getBrand();
+		
+		return line;
+	}
 }

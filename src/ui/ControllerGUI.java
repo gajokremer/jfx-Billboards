@@ -53,6 +53,7 @@ public class ControllerGUI {
     @FXML
     private TextField totalBillboards;
     
+    
     private ObservableList<Billboard> observableList;
     
     private InfrDep department;
@@ -81,6 +82,8 @@ public class ControllerGUI {
     	fxmlloader.setController(this);
     	Parent menu = fxmlloader.load();
     	mainPane.getChildren().setAll(menu);
+    	
+    	importData();
 	}
 	
 	@FXML
@@ -112,21 +115,25 @@ public class ControllerGUI {
 	@FXML
 	void generateBillboard(ActionEvent event) throws IOException {
 
-//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//		String line = br.readLine();
-
 		String line = dataReader.getText();
-		String [] data = line.split("\\++");
-		Billboard aBillboard = new Billboard(data[0], data[1], data[2], data[3]);
 		
-		if(department.addBillboard(aBillboard)) {
-
+		String [] data = line.split("\\++");
+		Billboard newBillboard = new Billboard(data[0], data[1], data[2], data[3]);
+		
+		if(department.addBillboard(newBillboard)) {
+			
 			String header = "Billboard created";
 			String message = "Billboard created successfully";
 			showSuccessDialogue(header, message);
-		}
 			
-		dataReader.setText(null);
+//			for(int i = 0; i < department.getBillboards().size(); i++) {
+//
+//				System.out.println(department.getBillboards().get(i).toString());
+//			}
+		}
+		
+		dataReader.setText("");
+		department.exportData();
 	}
 
 	@FXML
@@ -137,7 +144,9 @@ public class ControllerGUI {
 		Parent allBillboards = fxmlloader.load();
 		mainPane.getChildren().setAll(allBillboards);
 		
+		department.setTotalBillboards(0);
 		importData();
+		startTableView();
 		
 		String t = String.valueOf(department.getTotalBillboards());
 		totalBillboards.setText(t);
@@ -160,7 +169,7 @@ public class ControllerGUI {
     public void importData() throws IOException {
     	
     	department.importData();
-    	startTableView();
+//    	startTableView();
     }
     
     public void showSuccessDialogue(String header, String message) {
