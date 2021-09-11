@@ -1,8 +1,6 @@
 package ui;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -32,9 +30,6 @@ public class ControllerGUI {
     @FXML
     private TextField dataReader;
 
-//    @FXML
-//    private ListView<Billboard> lvBillboards;
-    
     @FXML
     private TableView<Billboard> tvBillboards;
     
@@ -95,11 +90,6 @@ public class ControllerGUI {
 	@FXML
     void addBillboard(ActionEvent event) throws IOException {
 
-//		FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("NewBillboard.fxml"));
-//		fxmlloader.setController(this);
-//		Parent menu = fxmlloader.load();
-//		mainPane.getChildren().setAll(menu);
-		
 		FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("NewBillboard.fxml"));
 		fxmlloader.setController(this);
 		DialogPane dialoguePane = fxmlloader.load();
@@ -108,7 +98,6 @@ public class ControllerGUI {
 		dialog.setDialogPane(dialoguePane);
 		dialog.setTitle("New billboard");
 		
-//		Optional<ButtonType> clickedButton = dialog.showAndWait();
 		dialog.showAndWait();
     }
 	
@@ -125,15 +114,11 @@ public class ControllerGUI {
 			String header = "Billboard created";
 			String message = "Billboard created successfully";
 			showSuccessDialogue(header, message);
-			
-//			for(int i = 0; i < department.getBillboards().size(); i++) {
-//
-//				System.out.println(department.getBillboards().get(i).toString());
-//			}
 		}
 		
 		dataReader.setText("");
 		department.exportData();
+		department.saveData();
 	}
 
 	@FXML
@@ -162,29 +147,25 @@ public class ControllerGUI {
     }
 	
     @FXML
-    void dangerReports(ActionEvent event) {
+    void dangerReports(ActionEvent event) throws IOException {
 
+    	department.exportDangerousBillboards();
+    	
+    	String header = "Report generated";
+    	String message = "Report generated successfully";
+    	
+    	showSuccessDialogue(header, message);
     }
     
     public void importData() throws IOException {
     	
     	department.importData();
-//    	startTableView();
     }
     
     public void showSuccessDialogue(String header, String message) {
 
     	Alert alert = new Alert(AlertType.INFORMATION);
-    	alert.setTitle("Contact Manager");
-    	alert.setHeaderText(header);
-    	alert.setContentText(message);
-    	alert.showAndWait();
-    }
-
-    public void showWarningDialogue(String header, String message) {
-
-    	Alert alert = new Alert(AlertType.WARNING);
-    	alert.setTitle("Contact Manager");
+    	alert.setTitle("Billboards Manager");
     	alert.setHeaderText(header);
     	alert.setContentText(message);
     	alert.showAndWait();

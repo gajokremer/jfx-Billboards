@@ -1,9 +1,12 @@
 package model;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,8 +15,9 @@ public class InfrDep {
 	private int totalBillboards = 0;
 	private List<Billboard> billboards;
 	
-//	public String BILLBOARD_FILE_NAME = "data/billboard.bbd";
+	public String BILLBOARD_BIN_FILE = "data/billboard.bin";
 	public String BILLBOARD_CSV_LIST = "data/BillboardDataExported.csv";
+	public String DANGEROUS_BILLBOARDS_REPORT = "data/DangerReport.txt";
 
 	public int getTotalBillboards() {
 		return totalBillboards;
@@ -34,26 +38,9 @@ public class InfrDep {
 	public InfrDep() {
 		
 		billboards = new ArrayList<Billboard>();
-//		billboards.add(new Billboard("200", "200", "True", "ICESI"));
 	}
 
-//	public boolean addBillboard(String w, String h, String iu, String b) {
-//
-//		Billboard newBillboard = new Billboard(w, h, iu, b);
-//		
-//		if(billboards.add(newBillboard)) {
-//
-//			return true;
-//
-//		} else {
-//
-//			return false;
-//		}
-//	}
-	
 	public boolean addBillboard(Billboard newBillboard) {
-		
-//		Billboard newBillboard = new Billboard(w, h, iu, b);
 		
 		if(billboards.add(newBillboard)) {
 			
@@ -67,19 +54,14 @@ public class InfrDep {
 		}
 	}
 	
-	public void saveBillboards() {
-		
+	public void saveData() throws FileNotFoundException, IOException {
+
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(BILLBOARD_BIN_FILE));
+		oos.writeObject(billboards);
+		oos.close();
 	}
 	
-	public void loadBillboards() {
-		
-	}
-	
-	public void exportDangerousBillboards(String fn) {
-		
-	}
-	
-	public void importData(/*String fn*/) throws IOException {
+	public void importData() throws IOException {
 		
 		billboards.removeAll(billboards);
 		
@@ -110,9 +92,31 @@ public class InfrDep {
 		
 		fw.close();
 	}
+	
+	public void exportDangerousBillboards() throws IOException {
 
-	@Override
-	public String toString() {
-		return null;
+		FileWriter fw = new FileWriter(DANGEROUS_BILLBOARDS_REPORT, false);
+
+		fw.write("=============================\n" + 
+				" DANGEROUS BILLBOARDS REPORT\n" + 
+				"=============================\n\n" +
+				"The dangerous Billboards are: \n\n");
+
+		for(int i = 0; i < billboards.size(); i++) {
+
+			Billboard aBillboard = billboards.get(i);
+
+			double w = Double.parseDouble(aBillboard.getWidth());
+			double h = Double.parseDouble(aBillboard.getHeight());
+
+			if(aBillboard.calculateArea(w, h) >= 160) {
+
+				int j = i + 1;
+				fw.write("	" + j + ". " + "Billboards " + aBillboard.getBrand() + 
+						" with an area of " + aBillboard.calculateArea(w, h) + " cm2\n\n");
+			}
+		}
+
+		fw.close();
 	}
 }

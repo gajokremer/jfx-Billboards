@@ -50,9 +50,9 @@ public class Billboard implements Serializable {
 		this.brand = brand;
 	}
 	
-	public double calculateArea(double height, double width) {
+	public double calculateArea(double width, double height) {
 		
-		double area = height * width;
+		double area = width * height;
 		return area;
 	}
 	
